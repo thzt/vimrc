@@ -1,79 +1,73 @@
-" 文件位置
+" ------------------------------------------------------------
+
 " $VIM/_vimrc
 
-" 默认配置
+" ------------------------------------------------------------
 
-set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
+set nu				       " show line number
+set nobk			       " don't create backup file
+set noswf			       " don't create swap file
+syntax enable		       " open syntax highlighting
+syntax on			       " auto highlight syntax
+set mouse=a			       " support mouse
+set ai				       " auto indent
+set ts=4			       " tab width
+au GUIEnter * simalt ~x    "full screen
 
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
+" ------------------------------------------------------------
 
-" 个人配置
+" Vundle.vim
+" git clone https://github.com/gmarik/Vundle.vim.git $VIM/vimfiles/bundle/Vundle.vim
 
-set nu				"显示行号
-"set nonu			"不显示行号
-set nobk			"不产生临时文件
-"set bk				"产生临时文件
-set noswf			"不产生交换文件
-"set swf			"产生交换文件
-syntax enable		"打开语法高亮
-syntax on			"自动语法高亮
-set mouse=a			"添加鼠标支持
-set ai				"自动缩进
-set ts=4			"设置tab宽度
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" 配置Vundle
-" /** vundle命令 **/
-" :BundleList - list configured bundles
-" :BundleInstall(!) - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!) - confirm(or auto-approve) removal of unused bundles
+" set the runtime path to include Vundle and initialize
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
 
-filetype off    " 配置开始
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-set rtp+=$VIM/vimfiles/bundle/vundle/  
-call vundle#rc()
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
 
-" Github网站上非vim-scripts仓库的插件，按下面格式填写
-" Bundle 'tpope/vim-fugitive'
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
 
-Bundle 'gmarik/vundle'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
 
-" vim-scripts仓库里的，按下面格式填写
-" Bundle 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
 
-" 非上面两种情况的，按下面格式填写
-" Bundle 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
 
-" call vundle#end()
-filetype plugin indent on    " 配置结束
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+" filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
+" ------------------------------------------------------------
 
 
 
