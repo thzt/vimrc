@@ -12,7 +12,8 @@ syntax on			       " auto highlight syntax
 set mouse=a			       " support mouse
 set ai				       " auto indent
 set ts=4			       " tab width
-au GUIEnter * simalt ~x    "full screen
+au GUIEnter * simalt ~x    " full screen
+set go-=T                  " remove icon bar
 
 " ------------------------------------------------------------
 
@@ -27,9 +28,6 @@ set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -52,6 +50,24 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
+" -----------------------------
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" emmnet
+Plugin 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = '<Tab>'
+
+" color scheme
+Plugin 'freya'
+
+" syntax
+Plugin 'derekwyatt/vim-scala'
+Plugin 'wting/rust.vim'
+
+" -----------------------------
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -69,6 +85,7 @@ filetype plugin indent on    " required
 
 " ------------------------------------------------------------
 
+colorscheme freya
 
 
 
